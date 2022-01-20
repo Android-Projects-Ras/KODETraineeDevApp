@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivUserPhoto"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUserPhoto"
+        app:layout_constraintStart_toEndOf="@+id/ivUserPhoto"
+        app:layout_constraintTop_toTopOf="@+id/ivUserPhoto"
+        tools:text="Ольга" />
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivUserPhoto"
+        app:layout_constraintStart_toEndOf="@+id/tvFirstName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Петрова" />
+
+    <TextView
+        android:id="@+id/tvPositionJob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/tvFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstName"
+        tools:text="Петрова" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
