@@ -1,34 +1,26 @@
 package com.rogok.kodetraineedevapp.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.rogok.kodetraineedevapp.R
+import com.rogok.kodetraineedevapp.databinding.ItemUserBinding
 import com.rogok.kodetraineedevapp.models.User
-import java.util.ArrayList
+import java.util.*
 
-class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.UserViewHolder>() {
     private var users = ArrayList<User>()
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+        val binding = ItemUserBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return UserViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-        val firstName = holder.itemView.findViewById<TextView>(R.id.tvFirstName)
-        val lastName = holder.itemView.findViewById<TextView>(R.id.tvLastName)
-        val positionJob = holder.itemView.findViewById<TextView>(R.id.tvPositionJob)
-
-        firstName.text = users[position].firstName
-        lastName.text = users[position].lastName
-        positionJob.text = users[position].position
-
+    override fun onBindViewHolder(holderUser: UserViewHolder, position: Int) {
+        holderUser.bind()
     }
 
     override fun getItemCount() = users.size
@@ -36,5 +28,14 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
     fun setNewData(newList: ArrayList<User>) {
         users = newList
         notifyDataSetChanged()
+    }
+
+    inner class UserViewHolder(private val binding: ItemUserBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind() {
+            binding.tvFirstName.text = users[adapterPosition].firstName
+            binding.tvLastName.text = users[adapterPosition].lastName
+            binding.tvPositionJob.text = users[adapterPosition].position
+        }
     }
 }

@@ -3,9 +3,9 @@ package com.rogok.kodetraineedevapp.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.rogok.kodetraineedevapp.R
 import com.rogok.kodetraineedevapp.adapters.RecyclerViewAdapter
+import com.rogok.kodetraineedevapp.databinding.FragmentOneBinding
 import com.rogok.kodetraineedevapp.models.User
 import java.util.*
 
@@ -18,9 +18,9 @@ class OneFragment : Fragment(R.layout.fragment_one) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val binding: FragmentOneBinding = FragmentOneBinding.bind(view)
 
-        val rvFragOne = view.findViewById<RecyclerView>(R.id.rvFragOne)
-        rvFragOne.adapter = recyclerAdapter
+        binding.rvFragOne.adapter = recyclerAdapter
         viewModel.users.observe(viewLifecycleOwner, { users ->
 
             val position = arguments?.getInt("position")
@@ -75,8 +75,6 @@ class OneFragment : Fragment(R.layout.fragment_one) {
                     recyclerAdapter.setNewData(back_office as ArrayList<User>)
                 }
             }
-
         })
     }
-
 }
